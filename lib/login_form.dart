@@ -8,23 +8,21 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  bool isAppear = false;
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (isAppear)
-          const ElevatedButton(
-            key: Key('loading'),
-            onPressed: null,
-            child: Text('Logging in...'),
+        if (isLoading)
+          const CircularProgressIndicator(
+            key: Key('loading_indicator'),
           )
         else ...[
           const TextField(
             key: Key('email'),
             decoration: InputDecoration(
-              labelText: 'email',
+              labelText: 'Email',
             ),
           ),
           const TextField(
@@ -38,7 +36,7 @@ class _LoginFormState extends State<LoginForm> {
             key: const Key('login'),
             onPressed: () {
               setState(() {
-                isAppear = true;
+                isLoading = true;
               });
             },
             child: const Text('Login'),
