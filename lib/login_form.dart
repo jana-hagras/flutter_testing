@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import'package:flutter/cupertino.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -9,48 +8,42 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  bool isAppear = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-      // IS APPEAR IS TRUE => TExtfield with email key and password key and a button with key login
-      // when clicked on a button, it changes the text of the button to "Logging in..."
-      // and the textfield with email key and password key should disappear
-      
-         isAppear == true
-            ? ElevatedButton(
-                key: const Key('login'),
-                onPressed: () {},
-                child: Text('Logging in...'),
-              )
-            : SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(),
-              ),
-        TextField(
-          key: const Key('email'),
-          decoration: InputDecoration(
-            labelText: 'email',
+        if (isAppear)
+          const ElevatedButton(
+            key: Key('login'),
+            onPressed: null,
+            child: Text('Logging in...'),
+          )
+        else ...[
+          const TextField(
+            key: Key('email'),
+            decoration: InputDecoration(
+              labelText: 'email',
+            ),
           ),
-        ),
-        TextField(
-          key: const Key('password'),
-          decoration: InputDecoration(
-            labelText: 'Password',
+          const TextField(
+            key: Key('password'),
+            decoration: InputDecoration(
+              labelText: 'Password',
+            ),
+            obscureText: true,
           ),
-          obscureText: true,
-        ),
-        ElevatedButton(
-          key: const Key('login'),
-          onPressed: () {
-            setState(() {
-              isAppear = true;
-            });
-          },
-          child: Text('Login'),
-        ),
-        
+          ElevatedButton(
+            key: const Key('login'),
+            onPressed: () {
+              setState(() {
+                isAppear = true;
+              });
+            },
+            child: const Text('Login'),
+          ),
+        ],
       ],
     );
   }
