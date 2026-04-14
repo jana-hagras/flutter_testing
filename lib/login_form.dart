@@ -16,7 +16,7 @@ class _LoginFormState extends State<LoginForm> {
       children: [
         if (isAppear)
           const ElevatedButton(
-            key: Key('login'),
+            key: Key('loading'),
             onPressed: null,
             child: Text('Logging in...'),
           )
