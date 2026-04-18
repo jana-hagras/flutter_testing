@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:testing/login_form.dart';
 
 void main() {
-  testWidgets('Login shows loading indicator after tap', (WidgetTester tester) async {
+  testWidgets('Login shows loading indicator after tap',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(body: LoginForm()),
