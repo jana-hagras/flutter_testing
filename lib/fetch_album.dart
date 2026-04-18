@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<Album> fetchAlbum(http.Client client) async {
+Future<Album> fetchAlbum(http.Client client, {String url = 'https://jsonplaceholder.typicode.com/albums/1'}) async {
   final response = await client.get(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    Uri.parse(url),
   );
 
   if (response.statusCode == 200) {
