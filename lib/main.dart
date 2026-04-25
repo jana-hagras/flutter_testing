@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  String? apiKey = dotenv.env['API_KEY'];
+  String? secretKey = dotenv.env['SECRET_KEY'];
+  String? databaseUrl = dotenv.env['DATABASE_URL'];
+  String? port = dotenv.env['PORT'];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text(appFlavor == "production" ? "Production" : "Development"),
+      //   ),
+      // ),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

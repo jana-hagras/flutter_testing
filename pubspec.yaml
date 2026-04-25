@@ -13,6 +13,8 @@ dependencies:
   http: ^1.6.0
   mocktail: ^1.0.5
   mockito: ^5.6.4
+  flutter_dotenv: ^6.0.0
+  flutter_secure_storage: ^10.0.0
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +24,20 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   build_runner: ^2.4.13
   test: ^1.30.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"
 
 flutter:
+  default-flavor: staging
   uses-material-design: true
+
+  assets:
+    # - path: assets/dev/
+    #   flavor: staging
+    # - path: assets/prod/
+    #   flavor: production
+    - .env
